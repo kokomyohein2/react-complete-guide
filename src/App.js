@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Person from './Person/Person';
+import React, { Component } from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import Person from "./Person/Person";
 
 class App extends Component {
   render() {
@@ -14,7 +14,11 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-        <Person></Person>
+        <Person name="Max" age="28" />
+        <Person name="Manu" age="29">Ò
+          My Hobbies: Racing
+        </Person>
+        <Person name="Stephanie" age="26" />
       </div>
     );
   }
