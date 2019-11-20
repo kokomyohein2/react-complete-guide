@@ -32,9 +32,18 @@ class App extends Component {
   };
 
   render() {
+    const style = {
+      backgroundColor: "white",
+      font: "inherit",
+      border: "1px solid blue",
+      padding: "8px",
+      cursor: "pointer"
+    };
     return (
       <div className="App">
-        <button onClick={this.swtichNameHandler.bind(this, "Maximilium")}>
+        <button 
+        style={style}
+        onClick={this.swtichNameHandler.bind(this, "Maximilium")}>
           Swtich Name
         </button>
         <Person
