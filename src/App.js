@@ -1,46 +1,48 @@
-import React, { useState } from "react";
+import React, { Component } from "react";
 import "./App.css";
 import Person from "./Person/Person";
 
-const app = props => {
-  const [personsState, setPersonsState] = useState({
+class App extends Component {
+  state = {
     persons: [
       { name: "Max", age: 28 },
       { name: "Manu", age: 29 },
       { name: "Steph", age: 26 }
-    ],
-    otherState: "some other value"
-  });
+    ]
+  };
 
-  const swtichNameHandler = () => {
-    setPersonsState({
+  swtichNameHandler = (newName) => {
+    this.setState({
       persons: [
-        { name: "ko", age: 1 },
-        { name: "Manu", age: 1 },
-        { name: "Steph", age: 1 }
+        { name: newName, age: 28 },
+        { name: "Manu", age: 29 },
+        { name: "Steph", age: 26  }
       ]
     });
   };
 
-  return (
-    <div className="App">
-      <button onClick={swtichNameHandler}>Swtich Name</button>
-      <Person
-        name={personsState.persons[0].name}
-        age={personsState.persons[0].age}
-      />
-      <Person
-        name={personsState.persons[1].name}
-        age={personsState.persons[1].age}
-      >
-        My Hobbies: Racing
-      </Person>
-      <Person
-        name={personsState.persons[2].name}
-        age={personsState.persons[2].age}
-      />
-    </div>
-  );
-};
+  render() {
+    return (
+      <div className="App">
+        <button onClick={this.swtichNameHandler.bind(this,"Maximilium")}>Swtich Name</button>
+        <Person
+          name={this.state.persons[0].name}
+          age={this.state.persons[0].age}
+        />
+        <Person
+          name={this.state.persons[1].name}
+          age={this.state.persons[1].age}
+          click={this.swtichNameHandler.bind(this,"Max!")}
+        >
+          My Hobbies: Racing
+        </Person>
+        <Person
+          name={this.state.persons[2].name}
+          age={this.state.persons[2].age}
+        />
+      </div>
+    );
+  }
+}
 
-export default app;
+export default App;
