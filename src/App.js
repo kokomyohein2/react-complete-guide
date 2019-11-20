@@ -8,7 +8,8 @@ class App extends Component {
       { name: "Max", age: 28 },
       { name: "Manu", age: 29 },
       { name: "Steph", age: 26 }
-    ]
+    ],
+    showPersons: false
   };
 
   swtichNameHandler = newName => {
@@ -31,6 +32,11 @@ class App extends Component {
     });
   };
 
+  togglePersonHandler = () => {
+    const condt = this.state.showPersons;
+    this.setState({ showPersons: !condt });
+  };
+
   render() {
     const style = {
       backgroundColor: "white",
@@ -41,27 +47,29 @@ class App extends Component {
     };
     return (
       <div className="App">
-        <button 
-        style={style}
-        onClick={this.swtichNameHandler.bind(this, "Maximilium")}>
-          Swtich Name
+        <button style={style} onClick={this.togglePersonHandler}>
+          Toggle Person Name
         </button>
-        <Person
-          name={this.state.persons[0].name}
-          age={this.state.persons[0].age}
-        />
-        <Person
-          name={this.state.persons[1].name}
-          age={this.state.persons[1].age}
-          click={this.swtichNameHandler.bind(this, "Max!")}
-          changed={this.nameChangedHandler}
-        >
-          My Hobbies: Racing
-        </Person>
-        <Person
-          name={this.state.persons[2].name}
-          age={this.state.persons[2].age}
-        />
+        {this.state.showPersons === true ? (
+          <div>
+            <Person
+              name={this.state.persons[0].name}
+              age={this.state.persons[0].age}
+            />
+            <Person
+              name={this.state.persons[1].name}
+              age={this.state.persons[1].age}
+              click={this.swtichNameHandler.bind(this, "Max!")}
+              changed={this.nameChangedHandler}
+            >
+              My Hobbies: Racing
+            </Person>
+            <Person
+              name={this.state.persons[2].name}
+              age={this.state.persons[2].age}
+            />
+          </div>
+        ) : null}
       </div>
     );
   }
