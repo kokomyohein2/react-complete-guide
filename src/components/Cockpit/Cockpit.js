@@ -1,31 +1,40 @@
-import React from "react";
+import React, {useEffect} from "react";
 
 import classes from "./Cockpit.css";
 
 const cockpit = props => {
-  const assignedClasses = [];
-  let btnClass = "";
+    useEffect(() => {
+        console.log('[Cockpit.js] useEffect');
+        //Mock HTTP request...
+        setTimeout(() => {
+            alert('Saved data to cloud!');
+        }, 1000);
+    }, []); //execute when first time run app
+    // },[props.persons]); //execute when persons called //can have multiple by comma
 
-  if (props.showPersons) {
-    btnClass = classes.Red;
-  }
+    const assignedClasses = [];
+    let btnClass = "";
 
-  if (props.persons.length <= 2) {
-    assignedClasses.push(classes.red);
-  }
+    if (props.showPersons) {
+        btnClass = classes.Red;
+    }
 
-  if (props.persons.length <= 1) {
-    assignedClasses.push(classes.bold);
-  }
+    if (props.persons.length <= 2) {
+        assignedClasses.push(classes.red);
+    }
 
-  return (
-    <div className={classes.Cockpit}>
-      <p className={assignedClasses.join(" ")}>This is working!</p>
-      <button className={btnClass} onClick={props.clicked}>
-        Toggle Person Name
-      </button>
-    </div>
-  );
+    if (props.persons.length <= 1) {
+        assignedClasses.push(classes.bold);
+    }
+
+    return (
+        <div className={classes.Cockpit}>
+            <p className={assignedClasses.join(" ")}>This is working!</p>
+            <button className={btnClass} onClick={props.clicked}>
+                Toggle Person Name
+            </button>
+        </div>
+    );
 };
 
 export default cockpit;
