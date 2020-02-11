@@ -9,9 +9,18 @@ const cockpit = props => {
         setTimeout(() => {
             alert('Saved data to cloud!');
         }, 1000);
+        return () => {
+            console.log('[Cockpit.js] cleanup work ');
+        };
     }, []); //execute when first time run app
     // },[props.persons]); //execute when persons called //can have multiple by comma
 
+    useEffect(()=>{
+        console.log('[Cockpit.js] 2nd useEffect');
+        return () => {
+            console.log('[Cockpit.js] 2nd cleanup work ');
+        };
+    })
     const assignedClasses = [];
     let btnClass = "";
 
